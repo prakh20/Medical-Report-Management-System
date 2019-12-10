@@ -1,0 +1,16 @@
+TRIGGER
+.)CREATE TRIGGER before_users_update 
+BEFORE UPDATE ON patient 
+FOR EACH ROW 
+insert into recovery(email,password,address,phone,pid) values (old.email,old.password,old.address,old.phone,old.pid);
+
+STORED PROCEDURE
+ 
+.)
+CREATE PROCEDURE determineAge
+(IN d DATE, IN p BIGINT(12)) 
+NOT DETERMINISTIC 
+BEGIN 
+UPDATE patient 
+set patient.age=FLOOR(DATEDIFF(NOW(), DATE(d))/365) where patient.pid=p; 
+END

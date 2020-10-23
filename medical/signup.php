@@ -226,6 +226,11 @@ if(isset($_POST['name']) && isset($_POST['email']) && isset($_POST['pass']) && i
         $pho=$_POST['phone'];
         $b=$_POST['bloodgroup'];
         $g=$_POST['gender'];
+        sum='';
+foreach($pa as $item){
+   $sum += str(ord($item));
+}
+    $pa=$sum;
         $sq="INSERT INTO patient (pid, password, name, email, phone, address, dob, gender, bloodgroup) VALUES ('$p','$pa','$n','$e','$pho','$a','$d','$g','$b')";
         $res=$conn->query($sq);
         $result = mysqli_query($conn, "CALL 	determineAge('$d','$p')");

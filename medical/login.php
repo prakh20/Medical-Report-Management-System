@@ -16,7 +16,12 @@
       {
         $pid=$_POST['pid'];
         $pass=$_POST['password'];
-        $query=mysqli_query($conn,"select * from patient where pid='".$pid."' and password='".$pass."'") ;
+	      sum='';
+foreach($pass as $item){
+   $sum += str(ord($item));
+	
+}
+        $query=mysqli_query($conn,"select * from patient where pid='".$pid."' and password='".$sum."'") ;
         $res=mysqli_fetch_row($query);
         if($res)
         {

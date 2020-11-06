@@ -8,8 +8,7 @@ STORED PROCEDURE
  
 .)
 CREATE PROCEDURE determineAge
-(IN d DATE, IN p BIGINT(12)) 
-NOT DETERMINISTIC 
+(IN d DATE, IN p BIGINT(12))  
 BEGIN 
 UPDATE patient 
 set patient.age=FLOOR(DATEDIFF(NOW(), DATE(d))/365) where patient.pid=p; 
